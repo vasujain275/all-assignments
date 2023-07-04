@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
+require('dotenv').config();
+
+let secret = process.env.JWT_SECRET;
+console.log(secret);
 
 let ADMINS = [];
 let USERS = [];
