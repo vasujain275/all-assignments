@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config()
+const jwt = require('jsonwebtoken');
 
-const secret =  process.env.JWT_SECRET
+const SECRET =  process.env.JWT_SECRET
 const mongoUrl = process.env.MONGO_URL
 
 const app = express();
@@ -49,7 +50,7 @@ const authenticateJwt = (req, res, next) => {
   }
 };
 
-mongoose.connect(MONGO_URL);
+mongoose.connect(mongoUrl);
 
 app.post('/admin/signup', (req, res) => {
   const { username, password } = req.body;
